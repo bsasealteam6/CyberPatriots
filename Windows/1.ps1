@@ -15,6 +15,7 @@ foreach ($user in $users) {
 
     }
     elseif(false)
+    #else
     {
         $admin = $a.popup("Do you want "+$username+" to be an admin?", 0,"Delete Files",4+256+32)
         if($admin -eq "y")
@@ -28,6 +29,8 @@ foreach ($user in $users) {
         }
     }
 }
+$users = Get-WmiObject -Class Win32_UserAccount
+echo $users
 $addUsers = $a.popup("Do you want to add any users?", 0,"Delete Files",4+256+32)
 if($addUsers -eq "6")
 {
@@ -39,7 +42,7 @@ if($addUsers -eq "6")
         $i++
         $user = New-Object –TypeName PSObject
         $username = Read-Host "Username for user number" $i":"
-        $password = Read-Host "Password for user number" $i":"
+        $password = Read-Host -AsSecureString "Password for user number" $i":"
         $group = Read-Host "Group for user number" $i":"
         $user | Add-Member –MemberType NoteProperty –Name username –Value $username 
         $user | Add-Member –MemberType NoteProperty –Name password –Value $password
