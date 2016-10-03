@@ -1,3 +1,4 @@
+#last edit 3oct16
 $users = Get-WmiObject -Class Win32_UserAccount
 $Computername = $env:COMPUTERNAME
 $ADSIComp = [adsi]"WinNT://$Computername"
