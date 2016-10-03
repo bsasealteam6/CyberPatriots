@@ -51,7 +51,6 @@ if($addUsers -eq "6")
     foreach ($userinfo in $users)
     {
         $user = $ADSIComp.Create("User",$userinfo.username)
-        $user.SetPassword($userinfo.password)
-        $user.SetInfo()
+        
     }
 }
