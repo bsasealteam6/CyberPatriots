@@ -44,10 +44,10 @@ if($addUsers -eq "6")
         $user = New-Object –TypeName PSObject
         [String]$username = Read-Host "Username for user number" $i":"
         $password = Read-Host -AsSecureString "Password for user number" $i":"
-        $group = Read-Host "Group for user number" $i":"
+#        $group = Read-Host "Group for user number" $i":"
         $user | Add-Member –MemberType NoteProperty –Name username –Value $username 
         $user | Add-Member –MemberType NoteProperty –Name password –Value $password
-        $user | Add-Member –MemberType NoteProperty –Name group –Value $group
+#        $user | Add-Member –MemberType NoteProperty –Name group –Value $group
         $newUsers+= $user
         $i--
     }
