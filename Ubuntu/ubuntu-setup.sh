@@ -1,4 +1,8 @@
 sudo apt-get install open-vm-tools
+sudo apt install tmux -y
+cat /etc/apt/sources.list
+ls /etc/apt/sources.list.d
+cat /etc/apt/source.list.d/*
 sudo awk -F'[/:]' '{if ($3 >= 1000 && $3 != 65534) print $1}' /etc/passwd
 
 read -p "Enter number of users to delete: " userNum
