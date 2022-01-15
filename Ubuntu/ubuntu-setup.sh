@@ -6,11 +6,11 @@ ls /etc/apt/sources.list.d
 sudo awk -F'[/:]' '{if ($3 >= 1000 && $3 != 65534) print $1}' /etc/passwd
 
 read -p "Enter number of users to delete: " userNum
-COUNTER=0
+let COUNTER=0
 while [  $COUNTER -lt $userNum ]; do
              	read -p "Enter name of user to delete: " user
 		sudo deluser $user
-             	COUNTER=COUNTER+1 
+             	let COUNTER=COUNTER+1 
 	done
 
 
@@ -18,7 +18,7 @@ while [  $COUNTER -lt $userNum ]; do
 
 
 read -p "Enter number of users to add: " userNum
-COUNTER=0
+let COUNTER=0
 while [  $COUNTER -lt $userNum ]; do
 		read -p "Enter name of user to add: " user
 		read -p "Should this user be an admin? " admin
@@ -26,7 +26,7 @@ while [  $COUNTER -lt $userNum ]; do
 #			sudo useradd $user -g admin
 #		fi
 		sudo useradd $user
-		COUNTER=COUNTER+1 
+		let COUNTER=COUNTER+1 
 	done
 
 
