@@ -1,4 +1,7 @@
 #last edit 3oct16
+Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "C:\PS\WinGet.msixbundle"
+Add-AppxPackage "C:\PS\WinGet.msixbundle"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 $users = Get-WmiObject -Class Win32_UserAccount
 $Computername = $env:COMPUTERNAME
 $ADSIComp = [adsi]"WinNT://$Computername"
@@ -41,13 +44,13 @@ if($addUsers -eq "6")
     for ($i = 0; $i -lt $numUsers; $i++)
     {
         $i++
-        $user = New-Object –TypeName PSObject
+        $user = New-Object ï¿½TypeName PSObject
         [String]$username = Read-Host "Username for user number" $i":"
         $password = Read-Host -AsSecureString "Password for user number" $i":"
 #        $group = Read-Host "Group for user number" $i":"
-        $user | Add-Member –MemberType NoteProperty –Name username –Value $username 
-        $user | Add-Member –MemberType NoteProperty –Name password –Value $password
-#        $user | Add-Member –MemberType NoteProperty –Name group –Value $group
+        $user | Add-Member ï¿½MemberType NoteProperty ï¿½Name username ï¿½Value $username 
+        $user | Add-Member ï¿½MemberType NoteProperty ï¿½Name password ï¿½Value $password
+#        $user | Add-Member ï¿½MemberType NoteProperty ï¿½Name group ï¿½Value $group
         $newUsers+= $user
         $i--
     }
@@ -77,3 +80,4 @@ if($addUsers -eq "6")
         
     }
 }
+choco install -y Malwarebytes 0patch virtualbox-guest-additions-guest.install nano 
