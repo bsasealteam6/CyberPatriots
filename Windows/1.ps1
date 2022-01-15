@@ -81,3 +81,6 @@ if($addUsers -eq "6")
     }
 }
 choco install -y Malwarebytes 0patch virtualbox-guest-additions-guest.install nano 
+Get-WindowsUpdate
+Install-WindowsUpdate
+winget upgrade --all
