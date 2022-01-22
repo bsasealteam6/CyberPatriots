@@ -1,5 +1,5 @@
-sudo apt-get install open-vm-tools
-sudo apt install tmux -y
+sudo apt install -y tmux clam open-vm-tools
+sudo freshclam
 cat /etc/apt/sources.list
 ls /etc/apt/sources.list.d
 
@@ -49,7 +49,8 @@ while [  $COUNTER -lt $userNum ]; do
 
 
 
+sudo clamscan / -r -i --infected --remove
 
 #sudo apt-get update
 #sudo apt-get upgrade
-#sudo shutdown -r
+ #sudo shutdown -r

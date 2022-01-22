@@ -1,6 +1,9 @@
 #last edit 3oct16
 Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "WinGet.msixbundle"
 Add-AppxPackage "WinGet.msixbundle"
+Set-NetFirewallProfile -Enabled True
+set-MpPreference -DisableRealtimeMonitoring $False
+Start-MpScan -ScanType FullScan
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 $users = Get-WmiObject -Class Win32_UserAccount
 $Computername = $env:COMPUTERNAME
@@ -44,13 +47,13 @@ if($addUsers -eq "6")
     for ($i = 0; $i -lt $numUsers; $i++)
     {
         $i++
-        $user = New-Object �TypeName PSObject
+        $user = New-Object -TypeName PSObject
         [String]$username = Read-Host "Username for user number" $i":"
         $password = Read-Host -AsSecureString "Password for user number" $i":"
 #        $group = Read-Host "Group for user number" $i":"
-        $user | Add-Member �MemberType NoteProperty �Name username �Value $username 
-        $user | Add-Member �MemberType NoteProperty �Name password �Value $password
-#        $user | Add-Member �MemberType NoteProperty �Name group �Value $group
+        $user | Add-Member -MemberType NoteProperty -Name username -Value $username 
+        $user | Add-Member -MemberType NoteProperty -Name password -Value $password
+#        $user | Add-Member -MemberType NoteProperty -Name group -Value $group
         $newUsers+= $user
         $i--
     }
@@ -81,6 +84,10 @@ if($addUsers -eq "6")
     }
 }
 choco install -y Malwarebytes 0patch virtualbox-guest-additions-guest.install nano 
-Get-WindowsUpdate
-Install-WindowsUpdate
+Install-PackageProvider NuGet -Force
+Set-PSRepository PSGallery -InstallationPolicy Trusted
+Install-Module PSWindowsUpdate -Repository PSGallery
+Import-Module PSWindowsUpdate
+Download-WindowsUpdate -AcceptAll
+Install-WindowsUpdate -AcceptAll
 winget upgrade --all
