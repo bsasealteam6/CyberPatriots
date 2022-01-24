@@ -1,5 +1,5 @@
 #last edit 22jan2022
-Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "WinGet.msixbundle"
+Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.1.12701/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "WinGet.msixbundle"
 Add-AppxPackage "WinGet.msixbundle"
 Set-NetFirewallProfile -Enabled True
 set-MpPreference -DisableRealtimeMonitoring $False
