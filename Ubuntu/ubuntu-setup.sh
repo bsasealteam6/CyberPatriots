@@ -2,6 +2,7 @@ sudo apt install -y tmux clam open-vm-tools
 sudo freshclam
 cat /etc/apt/sources.list
 ls /etc/apt/sources.list.d
+sudo netstat -tnlp
 
 sudo awk -F'[/:]' '{if ($3 >= 1000 && $3 != 65534) print $1}' /etc/passwd
 
