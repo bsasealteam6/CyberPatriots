@@ -51,6 +51,6 @@ while [  $COUNTER -lt $userNum ]; do
 
 sudo clamscan / -r -i --infected --remove
 
-#sudo apt-get update
-#sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
  #sudo shutdown -r
